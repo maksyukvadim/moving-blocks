@@ -33,6 +33,15 @@
     border: 1px solid black;
     margin: 4%;
 }
+
 .red {
     background-color: red;
+}
+
+.emptySpace {
+    border: medium dotted red;
+
+}
+button {
+    float: right;
 }

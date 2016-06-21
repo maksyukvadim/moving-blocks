@@ -2,30 +2,58 @@
  * Created by Вадим on 21.06.2016.
  */
 
-    $(function() {
+$(function () {
+    $('#flowerContainer').sortable({
 
-        $('#flowerContainer').sortable({
-            connectWith: '#fruitContainer',
-            sort: function(event, ui) {
-                $('#itemId').text(ui.item.attr("id"))
-            },
-            change: function(event, ui) {
-                $('#pos').text($('#flowerContainer *').index(ui.placeholder))
+        sort: function (event, ui) {
+            $('#itemId').text(ui.item.attr("id"))
+        },
+        change: function (event, ui) {
+            $('#pos').text($('#flowerContainer *').index(ui.placeholder))
+        }
+    });
+
+});
+
+$(function () {
+
+
+    var rang = JSON.parse(localStorage.getItem('rang')) || [],
+        div = $("#flowerContainer div"),
+        arr = [];
+
+    for (var i = 0; i < rang.length; i++) {
+        arr.push(div[rang[i] - 1])
+    }
+    rang.length && $(arr)
+        .appendTo($("#flowerContainer")) && $(".out")
+        .text(rang);;
+    $("#flowerContainer")
+        .sortable({
+            stop: function (event, ui) {
+                rang = [];
+                $("#flowerContainer div")
+                    .each(function (indx, element) {
+                        rang.push(1 + div.index(element) + " ");
+                    });
+                $(".out")
+                    .text(rang);
+                localStorage.setItem('rang', JSON.stringify(rang));
             }
         });
+    $("#flowerContainer")
+        .disableSelection();
+});
 
-    });
-$(function() {
+$(function () {
+$("#btn").click(function () {
 
-    $('#sortContainer').sortable();
 
-    $('<div id=buttonDiv><button>Получить порядок</button></div>').appendTo('body');
+    var rang = ["1 ","2 ","3 ","4 ","5 ","6 ","7 ","8 ","9 ","10 "],
+        div = $("#flowerContainer div"),
+        arr = [];
+    localStorage.setItem('rang', JSON.stringify(rang));
 
-    $('button').button().click(function() {
-        var order = $('#sortContainer').sortable("toArray");
-        for (var i = 0; i < order.length; i++) {
-            console.log("Position: " + i + " ID: " + order[i]);
-        }
-    })
 
+});
 });

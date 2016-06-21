@@ -1,0 +1,38 @@
+
+.sortable {
+    width: 100px;
+    background-color: lightgrey;
+    font-size: large;
+    margin: 4px;
+    text-align: center;
+    border: medium solid black;
+    padding: 10px;
+}
+
+
+
+#info {
+
+    right: 10px;
+    border: medium solid black;
+    padding: 4px
+}
+
+.flower {
+    background-color: lightgreen
+}
+.long {
+    background-color: greenyellow;
+    border: 1px solid black;
+    height: 200px;
+
+}
+.square {
+    height: 200px;
+    background-color: gray;
+    border: 1px solid black;
+    margin: 4%;
+}
+.red {
+    background-color: red;
+}

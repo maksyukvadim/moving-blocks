@@ -3,36 +3,29 @@
  */
 
 $(function () {
-    $('#flowerContainer').sortable({
+    $('#blockContainer').sortable({
 
-        sort: function (event, ui) {
-            $('#itemId').text(ui.item.attr("id"))
-        },
-        change: function (event, ui) {
-            $('#pos').text($('#flowerContainer *').index(ui.placeholder))
-        }
+
     });
 
 });
 
 $(function () {
-
-
     var rang = JSON.parse(localStorage.getItem('rang')) || [],
-        div = $("#flowerContainer div"),
+        div = $("#blockContainer div"),
         arr = [];
 
     for (var i = 0; i < rang.length; i++) {
         arr.push(div[rang[i] - 1])
     }
     rang.length && $(arr)
-        .appendTo($("#flowerContainer")) && $(".out")
+        .appendTo($("#blockContainer")) && $(".out")
         .text(rang);;
-    $("#flowerContainer")
+    $("#blockContainer")
         .sortable({
             stop: function (event, ui) {
                 rang = [];
-                $("#flowerContainer div")
+                $("#blockContainer div")
                     .each(function (indx, element) {
                         rang.push(1 + div.index(element) + " ");
                     });
@@ -41,19 +34,44 @@ $(function () {
                 localStorage.setItem('rang', JSON.stringify(rang));
             }
         });
-    $("#flowerContainer")
+    $("#blockContainer")
         .disableSelection();
 });
 
 $(function () {
-$("#btn").click(function () {
-
-
-    var rang = ["1 ","2 ","3 ","4 ","5 ","6 ","7 ","8 ","9 ","10 "],
-        div = $("#flowerContainer div"),
-        arr = [];
-    localStorage.setItem('rang', JSON.stringify(rang));
-
 
 });
-});
+
+$(function () {
+
+
+
+    $("#btn").click(function () {
+        var rang = ["1 ","2 ","3 ","4 ","5 ","6 ","7 ","8 ","9 ","10 "],
+            div = $("#blockContainer div"),
+            arr = [];
+        localStorage.setItem('rang', JSON.stringify(rang));
+        var containerBlock = $("#blockContainer");
+        for(var i = 0; i < containerBlock.children().length; i++ ){
+            containerBlock.children().eq[i] = $("#block"+ (i+1)).css({'position':'static'});
+            console.log(containerBlock.children().eq[i]);
+        }
+
+        $('#blockContainer:only-child').remove();
+        for(var i = 0; i < containerBlock.children().length; i++ ){
+            $('#blockContainer').append(containerBlock.children().eq[i]);
+        }
+        $('#blockContainer').sortable({
+            
+        });
+        console.log(containerBlock);
+    });
+
+
+
+
+
+
+
+
+    });

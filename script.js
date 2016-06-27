@@ -33,13 +33,13 @@ $(function () {
         start: function (event, ui) {
             ui.item.css("height","200px");
             if(ui.item.attr('id')=="block10"){
-                ui.placeholder.addClass("col-md-3  portlet-placeholderBig");
+                ui.placeholder.addClass("col-md-6  portlet-placeholderBig");
             } else {
                 ui.placeholder.addClass("col-md-3 square portlet-placeholder");
             }
             $('div .ui-corner-all').removeClass('ui-corner-all ')
         },
-
+                containment:'body',
                 dropOnEmpty: false,
                 stop: function (event, ui) {
                     rang = [];

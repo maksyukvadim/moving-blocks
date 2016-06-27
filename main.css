@@ -42,7 +42,7 @@
 }
 
 button {
-    float: right;
+    position: fixed;
     bottom: 0;
 }
 
@@ -51,11 +51,26 @@ button {
 }
 #btn3 {
     display: none;
+    right: 165px;
 }
-
+#btn1 {
+    right: 0;
+}
+#btn2 {
+    right: 165px;
+}
 .portlet-placeholder {
+    position: relative;
     border: 1px dotted black;
-  margin-top: 45px;
+    background-color: aliceblue;
+
+}
+.portlet-placeholderBig {
+    width: 580px;
     height: 200px;
-    width:280px;
+    background-color: aliceblue;
+    border: 1px solid black;
+    margin: 4%;
+
+
 }
